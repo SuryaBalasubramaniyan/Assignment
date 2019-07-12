@@ -30,14 +30,14 @@ public class VerifyLogin extends HttpServlet {
 		String pass=request.getParameter("t2");
 		PrintWriter out=response.getWriter();
 		//out.println("hello"+name);
-		
-		if(ValidateDetails.validate(name, pass)){  
-	        RequestDispatcher rd=request.getRequestDispatcher("welcome");  
+		ValidateDetails bean=new ValidateDetails();
+		if(bean.validate(name, pass)){  
+	        RequestDispatcher rd=request.getRequestDispatcher("welcome.jsp");  
 	        rd.forward(request,response);  
 	    }  
 	    else{  
 	        out.print("Sorry username or password error");  
-	        RequestDispatcher rd=request.getRequestDispatcher("signup.html");  
+	        RequestDispatcher rd=request.getRequestDispatcher("invalidlogin.jsp");  
 	        rd.include(request,response);  
 	    }  
 	          
