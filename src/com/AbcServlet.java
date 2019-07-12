@@ -3,6 +3,7 @@ package com;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,12 +26,23 @@ public class AbcServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 PrintWriter out = response.getWriter();  
-         
-		    String n=request.getParameter("name");  
-		    out.print("Welcome "+n);  
-		          
-		    out.close();
+		 Registration rg=new Registration();
+		   if((rg. register(request.getParameter("name"), Integer.parseInt(request.getParameter("age")),request.getParameter("password"), request.getParameter("dept"), request.getParameter("designation"))==1)){
+			   RequestDispatcher rd= request.getRequestDispatcher("success.jsp");
+			   request.setAttribute("check", 0);
+		     	rd.forward(request, response);
+		     	
+		   }
+		   if((rg.register(request.getParameter("name"), Integer.parseInt(request.getParameter("age")),request.getParameter("password"), request.getParameter("dept"), request.getParameter("designation"))==2)) {
+			   RequestDispatcher rd= request.getRequestDispatcher("success.jsp");
+			   request.setAttribute("check", 1);
+		       rd.forward(request, response); 
+		     	
+		   }
+		   else {
+			   RequestDispatcher rd= request.getRequestDispatcher("failure.jsp");
+		     	rd.forward(request, response);
+		}
 	}
 	
 

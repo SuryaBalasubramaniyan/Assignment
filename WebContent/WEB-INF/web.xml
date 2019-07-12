@@ -17,7 +17,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AbcServlet</servlet-name>
-    <url-pattern>/welcome</url-pattern>
+    <url-pattern>/register</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -29,14 +29,5 @@
     <servlet-name>VerifyLogin</servlet-name>
     <url-pattern>/xyz</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>Signup</display-name>
-    <servlet-name>Signup</servlet-name>
-    <servlet-class>com.Signup</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Signup</servlet-name>
-    <url-pattern>/register</url-pattern>
-  </servlet-mapping>
+  
 </web-app>
